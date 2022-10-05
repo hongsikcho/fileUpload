@@ -5,6 +5,7 @@ import com.ll.exam.app10.app.fileUpload.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +42,15 @@ public class MemberController {
     }
 
     @GetMapping("/profile")
-    public String showProfile(HttpSession session){
+    public String showProfile(HttpSession session, Model model){
         Long loginedMemberId = (Long) session.getAttribute("loginMemberId");
         boolean isLogined = loginedMemberId == null;
 
         if(isLogined == true)
             return "redirect:/?errorMsg=needToLogin ";
+
+        Member member = memberService.getMemberById(loginedMemberId);
+        model.addAttribute("loginMember",member);
         return "member/profile";
     }
 }

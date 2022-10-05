@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .profile-img{
+            width:100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    완료
+<img class="profile-img" th:src="@{|/gen/${loginMember.profileImg}|}">
+<div>아이디 : <span th:text="${loginMember.username}"></span></div>
+<div>이메일 : <span th:text="${loginMember.email}"></span></div>
 </body>
 </html>

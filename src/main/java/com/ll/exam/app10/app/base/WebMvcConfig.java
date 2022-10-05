@@ -14,7 +14,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/gen/**")
-                .addResourceLocations("file:///"+genFileDirPath+"/");
+                .addResourceLocations("file:///"+genFileDirPath+"/member");
         //localhost8010/gen-file/로 들어오는 요청은 genFileDirPath에서 찾겠다
     }
 }
