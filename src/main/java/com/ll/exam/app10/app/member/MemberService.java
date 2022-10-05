@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.MapReactiveUserDetailsServi
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.UUID;
 
@@ -22,6 +24,8 @@ public class MemberService {
     }
 
     public Member create(String username, String password, String email, MultipartFile profileImg) {
+
+
         String profileImgRelPath = "member/" + UUID.randomUUID().toString() + ".png";
         File profileImgFile = new File(genFileDirPath + profileImgRelPath);
 
